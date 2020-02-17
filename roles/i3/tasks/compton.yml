@@ -1,0 +1,16 @@
+---
+
+- name: Install compton
+  become: yes
+  apt:
+    name: compton
+
+- name: Create compton config dir
+  file:
+    dest: "{{ lookup('env', 'HOME') }}/.config/compton"
+    state: directory
+
+- name: Copy compton config
+  copy:
+    src: compton.conf
+    dest: "{{ lookup('env', 'HOME') }}/.config/compton/compton.conf"

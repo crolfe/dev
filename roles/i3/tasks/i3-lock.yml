@@ -1,0 +1,21 @@
+---
+
+- name: Create .lock dir
+  file:
+    dest: "{{ lookup('env', 'HOME')}}/.lock"
+    state: directory
+
+- name: Copy lock.png
+  copy:
+    src: lock.png
+    dest: "{{ lookup('env', 'HOME')}}/.lock/lock.png"
+
+- name: Copy lock.sh
+  copy:
+    src: lock.sh
+    dest: "{{ lookup('env', 'HOME')}}/.lock/lock.sh"
+
+- name: install i3lock
+  become: yes
+  apt:
+    name: i3lock

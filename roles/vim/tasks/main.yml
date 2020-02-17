@@ -1,0 +1,58 @@
+---
+
+- name: Create .vim directory
+  file:
+    path: "{{ lookup('env','HOME') }}/.vim"
+    state: directory
+
+- name: Create .vim_config directory
+  file:
+    path: "{{ lookup('env','HOME') }}/.vim_config"
+    state: directory
+
+- name: Create .vim/autoload directory
+  file:
+    path: "{{ lookup('env','HOME') }}/.vim/autoload"
+    state: directory
+
+- name: Copy install_vimrc.sh
+  copy:
+    src: install_vimrc.sh
+    dest: "{{ lookup('env','HOME') }}/install_vimrc.sh"
+    mode: "u+rwx"
+
+- name: Copy basic.vim
+  copy:
+    src: basic.vim
+    dest: "{{ lookup('env','HOME') }}/.vim_config/basic.vim"
+
+
+- name: Copy plugin.vim
+  copy:
+    src: plugin.vim
+    dest: "{{ lookup('env','HOME') }}/.vim_config/plugin.vim"
+
+
+- name: Copy functions.vim
+  copy:
+    src: functions.vim
+    dest: "{{ lookup('env','HOME') }}/.vim_config/functions.vim"
+
+
+- name: Generate ~/.vimrc
+  shell: ~/install_vimrc.sh
+
+- name: Install plug.vim
+  get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: "{{ lookup('env','HOME') }}/.vim/autoload/plug.vim"
+
+
+- name: Install vim
+  become: yes
+  apt:
+    name:
+      - vim
+
+- name: Install vim plugins
+  shell: vim +PlugInstall +qall

@@ -1,0 +1,105 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=/usr/local/openresty/nginx/sbin:/usr/local/bin:/usr/local/share:/home/colin/.local/bin:/home/colin/bin:/usr/local/go/bin:/home/colin/code/golang/bin:/usr/bin:/usr/lib/go-1.10/bin:$PATH:~/.cargo/bin
+
+# Path to your oh-my-zsh installation.
+export ZSH=/home/colin/.oh-my-zsh
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+#ZSH_THEME="pygmalion"
+ZSH_THEME="af-magic"
+
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+plugins=(git ssh-agent)
+
+zstyle :omz:plugins:ssh-agent identities
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# You may need to manually set your language nvironment
+export LANG=en_US.UTF-8
+export LOCALE=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+export VISUAL='vim'
+export EDITOR="$VISUAL"
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+export SSH_KEY_PATH="~/.ssh/id_ed25519"
+
+export GOPATH=~/code/golang
+
+alias ll='ls -ahl'
+alias wifi='sudo nmtui'
+alias golang='cd $GOPATH/src/github.com/crolfe'
+
+function disable_trackpad() {
+    ID=`xinput list | grep -Eo 'TouchPad\s*id\=[0-9]{1,2}' | grep -Eo '[0-9]{1,2}'`
+    xinput set-prop $ID "Device Enabled" 0
+}
+
+#disable_trackpad
+
+TERM=xterm-256color
+
+alias pdf='evince'
+alias top='htop'
+
+# speeds up npm install
+#npm set progress=false
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+gadd() {
+    # allows you to select from list of modified files and git add them - select with tab
+    git add $(git ls-files -m | fzf -m)
+}
+
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+    eval `ssh-agent`
+    ssh-add
+fi
+
+alias setclip="xclip -selection c"
+alias getclip="xclip -selection c -o"
+
+reset_wifi() {
+    sudo nmcli radio wifi off
+    echo "wifi disabled"
+    sleep 1
+    sudo nmcli radio wifi on
+    echo "wifi enabled"
+}
+
+sv() {
+    if [[ ! -z $VIRTUAL_ENV ]]; then
+        deactivate
+    fi
+    source venv/bin/activate
+}
+
+alias utc='echo $(python3 -c "import arrow; print(arrow.get().isoformat())")'
+alias notes='cd ~/Documents/notes'
+alias library='cd ~/code/python/django-clean-architecture-demo'
+alias dc=$(which docker-compose)
+alias ag='rg'
+alias doh='cd ~/code/python/doh-proxy'
+export CURRENT_UID=$(id -u):$(id -g)
+
+# remap caps lock => ctrl
+~/bin/xmodmap_reload.py

@@ -1,0 +1,8 @@
+---
+- hosts: ubuntu
+  roles:
+    - system
+    - development
+    - i3
+    - dotfiles
+    - vim

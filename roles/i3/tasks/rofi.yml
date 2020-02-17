@@ -1,0 +1,5 @@
+---
+- name: Install Rofi
+  become: yes
+  apt:
+    name: rofi

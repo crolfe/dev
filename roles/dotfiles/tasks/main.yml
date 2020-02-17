@@ -1,0 +1,18 @@
+---
+
+- include_tasks: scripts.yml
+
+- name: Copy .zshrc
+  copy:
+    src: zshrc
+    dest: "{{ lookup('env', 'HOME') }}/.zshrc"
+
+- name: Copy .Xmodmap
+  copy:
+    src: Xmodmap
+    dest: "{{ lookup('env', 'HOME') }}/.Xmodmap"
+
+- name: Copy .Xresources
+  copy:
+    src: Xresources
+    dest: "{{ lookup('env', 'HOME') }}/.Xresources"

@@ -1,0 +1,12 @@
+---
+
+- name: Create yabar config dir
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.config/yabar"
+    state: directory
+
+- name: Install yabar
+  become: yes
+  apt:
+    name:
+      - yabar

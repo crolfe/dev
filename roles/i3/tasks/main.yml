@@ -1,0 +1,31 @@
+---
+- name: Install packages
+  become: yes
+  apt:
+    name:
+      - feh
+      - i3
+      - scrot
+    state: present
+
+- name: Create i3 config dir
+  file:
+    dest: "{{ lookup('env', 'HOME') }}/.i3"
+    state: directory
+
+- name: Copy i3 config
+  copy:
+    src: config
+    dest: "{{ lookup('env','HOME') }}/.i3/config"
+
+- name: Make config dir
+  file:
+    path: "{{ lookup('env','HOME') }}/.i3"
+    state: directory
+    owner: colin
+    group: colin
+    mode: 0755
+
+- include_tasks: compton.yml
+- include_tasks: rofi.yml
+- include_tasks: i3-lock.yml

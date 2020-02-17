@@ -1,0 +1,14 @@
+---
+
+- name: Install python packages to home directory
+  pip:
+    executable: pip3
+    extra_args: "--user"
+    name:
+      - arrow
+      - black
+      - flake8
+      - i3ipc
+      - mypy
+      - ipython
+      - requests

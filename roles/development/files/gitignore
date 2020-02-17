@@ -1,0 +1,13 @@
+.swp
+colin.py
+.cache
+core
+env
+media
+tags
+notes
+prof
+example_project
+db.sqlite3
+
+.mypy_cache

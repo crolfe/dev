@@ -1,0 +1,29 @@
+---
+
+- name: Install packages
+  become: yes
+  apt:
+    pkg:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg-agent
+      - golang
+      - htop
+      - python3-apt
+      - software-properties-common
+      - tmux
+      - wget
+      - zsh
+    state: present
+
+#- name: oh my zsh
+  #shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+- include_tasks: docker.yml
+- include_tasks: fonts.yml
+
+- name: Install ripgrep from Github
+  become: yes
+  apt:
+    deb: https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb

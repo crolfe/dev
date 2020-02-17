@@ -1,0 +1,25 @@
+---
+
+- name: install node LTS
+  become: yes
+  shell: curl -sL https://rpm.nodesource.com/setup_10.x | bash -
+
+- name: Download node-10-init.rs script
+  get_url:
+    url: https://rpm.nodesource.com/setup_10.x
+    dest: /tmp/node-10-init.sh
+
+- name: Make node-10-init.sh executable
+  file:
+    path: /tmp/node-10-init.sh
+    mode: a+x
+
+- name: Add node repository
+  become: yes
+  shell: /tmp/node-10-init.sh
+
+- name: Install nodejs
+  become: yes
+  dnf:
+    name:
+      - nodejs

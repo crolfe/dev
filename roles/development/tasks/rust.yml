@@ -1,0 +1,10 @@
+---
+
+- name: check if rules file exists
+  stat:
+    path: "{{ lookup('env', 'HOME') }}/.cargo/bin/rustup"
+  register: rustup_exists
+
+- name: Install rustup
+  shell: "curl https://sh.rustup.rs | bash -s  -- -y"
+  when: rustup_exists.stat == False

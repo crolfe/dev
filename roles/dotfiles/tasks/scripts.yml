@@ -1,0 +1,26 @@
+---
+
+- name: Create user scripts dir
+  file:
+    dest: "{{ lookup('env', 'HOME') }}/scripts"
+    state: directory
+
+- name: Copy xmodmap_reload.py
+  copy:
+    src: xmodmap_reload.py
+    dest: "{{ lookup('env', 'HOME') }}/xmodmap_reload.py"
+
+- name: Copy yabar.sh
+  copy:
+    src: yabar.sh
+    dest: "{{ lookup('env', 'HOME') }}/yabar.sh"
+
+- name: Copy workspaces.py
+  copy:
+    src: workspaces.py
+    dest: "{{ lookup('env', 'HOME') }}/workspaces.py"
+
+- name: Copy screenshot.sh
+  copy:
+    src: screenshot.sh
+    dest: "{{ lookup('env', 'HOME') }}/screenshot.sh"

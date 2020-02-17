@@ -1,0 +1,32 @@
+---
+
+- name: Copy fontawesome-webfont.ttf
+  become: yes
+  copy:
+    src: fontawesome-webfont.ttf
+    dest: /usr/share/fonts
+
+- name: Copy Inconsolata-Regular.ttf
+  become: yes
+  copy:
+    src: Inconsolata-Regular.ttf
+    dest: /usr/share/fonts
+
+- name: Copy MaterialIcons-Regular.ttf
+  become: yes
+  copy:
+    src: MaterialIcons-Regular.ttf
+    dest: /usr/share/fonts
+
+- name: Copy Roboto-Mono.ttf
+  become: yes
+  copy:
+    src: Roboto-Mono.ttf
+    dest: /usr/share/fonts
+
+
+- name: Install Cozette
+  become: yes
+  get_url:
+    url: https://github.com/slavfox/Cozette/releases/download/v.1.4.0/CozetteVector.ttf
+    dest: /usr/share/fonts/CozetteVector.ttf

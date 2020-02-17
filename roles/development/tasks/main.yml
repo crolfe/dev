@@ -1,0 +1,35 @@
+---
+- name: Install general compilation deps
+  become: yes
+  apt:
+    update_cache: yes
+    name:
+      - automake
+      - build-essential
+      - cmake
+      - cmake-data
+      - clang-7
+      - gcc
+      - git
+      - make
+      - pkg-config
+    state: present
+
+- name: Copy .gitconfig
+  copy:
+    src: gitconfig
+    dest: "{{ lookup('env', 'HOME') }}/.gitconfig"
+
+- name: Copy .gitignore
+  copy:
+    src: gitignore
+    dest: "{{ lookup('env', 'HOME') }}/.gitignore"
+
+- name: Copy psqlrc
+  copy:
+    src: psqlrc
+    dest: "{{ lookup('env', 'HOME') }}/.psqlrc"
+
+
+- include_tasks: rust.yml
+- include_tasks: python.yml
