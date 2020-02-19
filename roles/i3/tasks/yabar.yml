@@ -5,6 +5,11 @@
     path: "{{ lookup('env', 'HOME') }}/.config/yabar"
     state: directory
 
+- name: Copy yabar config
+  copy:
+    src: yabar.conf
+    dest: "{{ lookup('env', 'HOME') }}/.config/yabar/yabar.conf"
+
 - name: Install yabar
   become: yes
   apt:
