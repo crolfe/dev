@@ -22,7 +22,7 @@ bindsym $mod+Return exec gnome-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 
-bindsym $mod+d exec sh ~/bin/rofi.sh run
+bindsym $mod+d exec sh ~/scripts/rofi.sh run
 
 # change focus
 bindsym $mod+h focus left
@@ -151,7 +151,7 @@ bindsym $mod+r mode "resize"
 
 # custom bindings
 bindsym $mod+shift+x exec ~/.lock/lock.sh ~/.lock/lock.png
-bindsym $mod+z exec "~/dotfiles/scripts/power.sh"
+bindsym $mod+z exec "~/scripts/power.sh"
 
 # screenshots
 bindsym --release Print exec maim -s ~/Pictures/screenshots/$(date +%s).png
@@ -179,8 +179,8 @@ exec --no-startup-id compton
 
 #exec --no-startup-id tlp start
 #exec --no-startup-id display-visor -l LID
-exec_always --no-startup-id "~/bin/xmodmap_reload.py"
-exec_always --no-startup-id ~/bin/yabar.sh
+exec_always --no-startup-id "~/scripts/xmodmap_reload.py"
+exec_always --no-startup-id ~/scripts/yabar.sh
 
 # set wallpaper
-exec_always feh --no-startup-id --bg-scale ~/Pictures/wallpaper/sleepy_mountains_dark_v04.png
+#exec_always feh --no-startup-id --bg-scale ~/Pictures/wallpaper/sleepy_mountains_dark_v04.png

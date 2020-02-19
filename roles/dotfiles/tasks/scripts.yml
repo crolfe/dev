@@ -8,19 +8,35 @@
 - name: Copy xmodmap_reload.py
   copy:
     src: xmodmap_reload.py
-    dest: "{{ lookup('env', 'HOME') }}/xmodmap_reload.py"
+    dest: "{{ lookup('env', 'HOME') }}/scripts/xmodmap_reload.py"
+    mode: preserve
 
 - name: Copy yabar.sh
   copy:
     src: yabar.sh
-    dest: "{{ lookup('env', 'HOME') }}/yabar.sh"
+    dest: "{{ lookup('env', 'HOME') }}/scripts/yabar.sh"
+    mode: preserve
 
 - name: Copy workspaces.py
   copy:
     src: workspaces.py
-    dest: "{{ lookup('env', 'HOME') }}/workspaces.py"
+    dest: "{{ lookup('env', 'HOME') }}/scripts/workspaces.py"
+    mode: preserve
 
 - name: Copy screenshot.sh
   copy:
     src: screenshot.sh
-    dest: "{{ lookup('env', 'HOME') }}/screenshot.sh"
+    dest: "{{ lookup('env', 'HOME') }}/scripts/screenshot.sh"
+    mode: preserve
+
+- name: Copy power.sh
+  copy:
+    src: power.sh
+    dest: "{{ lookup('env', 'HOME') }}/scripts/power.sh"
+    mode: preserve
+
+- name: Copy rofi.sh
+  copy:
+    src: rofi.sh
+    dest: "{{ lookup('env', 'HOME') }}/scripts/rofi.sh"
+    mode: preserve
