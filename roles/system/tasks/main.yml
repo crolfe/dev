@@ -27,3 +27,19 @@
   become: yes
   apt:
     deb: https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb
+
+
+- name: Download oh-my-sh
+  get_url:
+    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+    dest: /tmp/install_oh_my_zsh.sh
+    mode: u+rwx
+
+- name: Check if oh-my-zsh installed
+  stat:
+    path: "{{ lookup('env', 'HOME') }}/.oh-my-zsh"
+  register: oh_my_zsh_installed
+
+- name: Install oh-my-zsh
+  when: oh_my_zsh_installed.stat == False
+  shell: /tmp/install_oh_my_zsh.sh
