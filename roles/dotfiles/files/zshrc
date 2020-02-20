@@ -102,4 +102,4 @@ alias doh='cd ~/code/python/doh-proxy'
 export CURRENT_UID=$(id -u):$(id -g)
 
 # remap caps lock => ctrl
-~/bin/xmodmap_reload.py
+~/scripts/xmodmap_reload.py
