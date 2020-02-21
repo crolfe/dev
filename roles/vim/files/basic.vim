@@ -8,7 +8,6 @@ Plug 'chr4/nginx.vim'
 Plug 'dense-analysis/ale'
 Plug 'fatih/vim-go'
 Plug 'hashivim/vim-terraform'
-Plug 'integralist/vim-mypy'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
