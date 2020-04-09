@@ -58,3 +58,9 @@ set grepprg=rg\ --vimgrep
 
 " use ctrl + f to search with the power of rg + fzf
 map <C-f> :Find<cr>
+
+
+"""""""""""""""""""""""""""
+" rust.vim
+"""""""""""""""""""""""""""
+let g:rustfmt_autosave = 1
