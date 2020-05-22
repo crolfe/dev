@@ -32,4 +32,5 @@
 
 
 - include_tasks: rust.yml
+- include_tasks: node.yml
 - include_tasks: python.yml

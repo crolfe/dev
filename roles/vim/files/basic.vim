@@ -12,12 +12,13 @@ Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'lepture/vim-jinja'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'matze/vim-move'
 Plug 'morhetz/gruvbox'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'rust-lang/rust.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tomasr/molokai'
 Plug 'tpope/vim-fugitive'
@@ -101,3 +102,11 @@ syntax enable
 """"""""""""""""""""""""""""""
 " use tabs
 autocmd Filetype go setlocal noexpandtab
+
+
+"""""""""""""
+" Javascript
+"""""""""""""
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType vue setlocal ts=2 sts=2 sw=2 expandtab

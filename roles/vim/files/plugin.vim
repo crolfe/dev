@@ -10,13 +10,14 @@ let g:move_key_modifier = 'C'
 let python_highlight_all = 1
 let b:ale_linters = {
 \   'ansible': ['ansible_lint'],
-\   'javascript': ['eslin'],
+\   'javascript': ['eslint', 'vue'],
 \   'python': ['flake8'],
 \   'go': ['errcheck'],
 \}
 let b:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'go': ['gofmt'],
+\   'javascript': ['eslint', 'prettier'],
 \   'python': ['black'],
 \}
 
