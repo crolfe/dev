@@ -7,6 +7,7 @@ if [[ ! -d venv ]]; then
 	python3 -m venv venv
 fi
 
+./venv/bin/pip install -U pip setuptools
 ./venv/bin/pip install -U ansible ansible-lint wheel
 
 sudo apt-get update
