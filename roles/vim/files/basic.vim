@@ -12,7 +12,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'lepture/vim-jinja'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'matze/vim-move'
 Plug 'morhetz/gruvbox'
 Plug 'ntpeters/vim-better-whitespace'
