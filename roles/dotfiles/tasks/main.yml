@@ -16,3 +16,25 @@
   copy:
     src: Xresources
     dest: "{{ lookup('env', 'HOME') }}/.Xresources"
+
+- name: check if oh-my-zsh installed
+  stat:
+    path: "{{ lookup('env', 'HOME') }}/.oh-my-zsh"
+  register: ohmyzsh_installed
+
+- name: Download zsh installer
+  when: ohmyzsh_installed.stat.exists == False
+  get_url:
+    url: https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh
+    mode: 0755
+    dest: /tmp/
+
+- name: Install oh-my-zsh
+  when: ohmyzsh_installed.stat.exists == False
+  shell: /tmp/install_oh_my_zsh.sh
+
+- name: Remove the install_oh_my_zsh.sher.sh
+  when: ohmyzsh_installed.stat.exists == False
+  file:
+    path: /tmp/install_oh_my_zsh.sh
+    state: absent
