@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Adapted from Andrey Tataranovich script www.tataranovich.com/public/scripts/xkbmapd.py
 # to load the user .Xmodmap file on 1) start, 2) resume and 3) layout switch
 #
