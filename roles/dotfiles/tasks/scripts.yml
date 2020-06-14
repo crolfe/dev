@@ -5,12 +5,6 @@
     dest: "{{ lookup('env', 'HOME') }}/scripts"
     state: directory
 
-- name: Copy xmodmap_reload.py
-  copy:
-    src: xmodmap_reload.py
-    dest: "{{ lookup('env', 'HOME') }}/scripts/xmodmap_reload.py"
-    mode: preserve
-
 - name: Copy yabar.sh
   copy:
     src: yabar.sh

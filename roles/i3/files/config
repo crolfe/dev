@@ -11,7 +11,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Inconsolata Regular 12
+font pango:Inconsolata Regular 14
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -75,15 +75,15 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 set $workspace1 "1. "
-set $workspace2 "2. "
+set $workspace2 "2. "
 set $workspace3 "3.  "
-set $workspace4 "4. "
-set $workspace5 "5. "
-set $workspace6 "6. "
-set $workspace7 "7. "
-set $workspace8 "8. "
-set $workspace9 "9. "
-set $workspace10 "10. "
+set $workspace4 "4. "
+set $workspace5 "5. "
+set $workspace6 "6. "
+set $workspace7 "7. "
+set $workspace8 "8. "
+set $workspace9 "9. "
+set $workspace10 "10. "
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -177,10 +177,31 @@ exec firefox
 # gives rofi some transparency
 exec --no-startup-id compton
 
-#exec --no-startup-id tlp start
-#exec --no-startup-id display-visor -l LID
-exec_always --no-startup-id "~/scripts/xmodmap_reload.py"
-exec_always --no-startup-id ~/scripts/yabar.sh
+# Taken from https://github.com/dracula/i3/blob/master/.config/i3/config
+# class                 border  bground text    indicator child_border
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+
+client.background       #F8F8F2
+
+bar {
+  status_command i3blocks
+  position top
+  colors {
+    background #282A36
+    statusline #F8F8F2
+    separator  #44475A
+
+    focused_workspace  #44475A #44475A #F8F8F2
+    active_workspace   #282A36 #44475A #F8F8F2
+    inactive_workspace #282A36 #282A36 #BFBFBF
+    urgent_workspace   #FF5555 #FF5555 #F8F8F2
+    binding_mode       #FF5555 #FF5555 #F8F8F2
+  }
+}
 
 # set wallpaper
 #exec_always feh --no-startup-id --bg-scale ~/Pictures/wallpaper/sleepy_mountains_dark_v04.png

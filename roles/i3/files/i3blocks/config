@@ -1,0 +1,53 @@
+# i3blocks config file
+#
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+#
+# List of valid properties:
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+# Global properties
+command=/home/colin/.config/i3blocks/$BLOCK_NAME/$BLOCK_NAME
+separator_block_width=15
+markup=pango
+
+I3B_COLOR_GOOD=#50FA7B      # green
+I3B_COLOR_DEGRADED=#f1fa8c  # yellow
+I3B_COLOR_BAD=#ff5555       # red
+I3B_COLOR=#50FA7B           # default "colored" color (green)
+
+
+[volume]
+label=VOL:
+interval=1
+signal=10
+separator=true
+
+[iface]
+#IFACE=enp5s0
+interval=10
+separator=true
+
+[weather]
+interval=300
+separator=true
+LOCATION=Vancouver
+
+[time]
+command=date '+%Y-%m-%d %H:%M:%S'
+interval=5
+separator=true

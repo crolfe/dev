@@ -1,0 +1,12 @@
+---
+
+- name: Install i3blocks
+  become: yes
+  apt:
+    name: i3blocks
+
+- name: Copy i3blocks config
+  copy:
+    mode: preserve
+    src: i3blocks
+    dest: "{{ lookup('env', 'HOME') }}/.config/"

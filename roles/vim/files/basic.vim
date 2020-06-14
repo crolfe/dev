@@ -6,6 +6,7 @@ Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'achimnol/python-syntax'
 Plug 'chr4/nginx.vim'
 Plug 'dense-analysis/ale'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'fatih/vim-go'
 Plug 'hashivim/vim-terraform'
 Plug 'itchyny/lightline.vim'
@@ -57,6 +58,7 @@ endif
 set background=dark
 
 set colorcolumn=80   " vertical line at max line length
+colorscheme dracula
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Files/backups etc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -7,11 +7,14 @@
       - apt-transport-https
       - ca-certificates
       - curl
+      - dconf-cli
       - evince
       - gnupg-agent
       - golang
       - htop
+      - neofetch
       - python3-apt
+      - ripgrep
       - software-properties-common
       - tmux
       - wget
@@ -23,12 +26,6 @@
 
 - include_tasks: docker.yml
 - include_tasks: fonts.yml
-
-- name: Install ripgrep from Github
-  become: yes
-  apt:
-    deb: https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb
-
 
 - name: Download oh-my-sh
   get_url:

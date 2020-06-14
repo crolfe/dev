@@ -3,3 +3,13 @@
   become: yes
   apt:
     name: rofi
+
+- name: Create Rofi config dir
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.config/rofi"
+    state: directory
+
+- name: Copy Rofi Dracular theme
+  copy:
+    src: config.rasi
+    dest: "{{ lookup('env', 'HOME') }}/.config/rofi/config.rasi"

@@ -7,15 +7,10 @@
     src: zshrc
     dest: "{{ lookup('env', 'HOME') }}/.zshrc"
 
-- name: Copy .Xmodmap
-  copy:
-    src: Xmodmap
-    dest: "{{ lookup('env', 'HOME') }}/.Xmodmap"
-
-- name: Copy .Xresources
-  copy:
-    src: Xresources
-    dest: "{{ lookup('env', 'HOME') }}/.Xresources"
+#- name: Copy .Xresources
+  #copy:
+    #src: Xresources
+    #dest: "{{ lookup('env', 'HOME') }}/.Xresources"
 
 - name: check if oh-my-zsh installed
   stat:
@@ -38,3 +33,31 @@
   file:
     path: /tmp/install_oh_my_zsh.sh
     state: absent
+
+
+- name: Install Dracula theme for zsh
+  git:
+    repo: https://github.com/dracula/zsh.git
+    dest: "{{ lookup('env', 'HOME') }}/.oh-my-zsh/themes/dracula"
+
+- name: Copy Dracula theme file
+  file:
+    state: link
+    src: "{{ lookup('env', 'HOME') }}/.oh-my-zsh/themes/dracula/dracula.zsh-theme"
+    dest: "{{ lookup('env', 'HOME') }}/.oh-my-zsh/themes/dracula.zsh-theme"
+
+- name: Install Dracula theme for Xresources
+  git:
+    repo: https://github.com/dracula/xresources.git
+    dest: "/tmp/dracula-xresources"
+
+- name: Copy Dracula Xresources file
+  copy:
+    src: /tmp/dracula-xresources/Xresources
+    dest: "{{ lookup('env', 'HOME') }}/.Xresources"
+
+# Make sure to run /tmp/dracula-gnome-terminal/install.sh and follow the interactive prompts
+- name: Install Dracula theme for gnome-terminal
+  git:
+    repo: https://github.com/dracula/gnome-terminal.git
+    dest: "/tmp/dracula-gnome-terminal"
