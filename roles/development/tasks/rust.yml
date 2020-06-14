@@ -8,3 +8,9 @@
 - name: Install rustup
   shell: "curl https://sh.rustup.rs | bash -s  -- -y"
   when: rustup_exists.stat == False
+
+- name: Install rust dev libraries
+  become: yes
+  apt:
+    name:
+      - librust-openssl-dev
