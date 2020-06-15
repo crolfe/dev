@@ -1,9 +1,30 @@
 ---
 
-- name: Install i3blocks
+- name: Clone i3blocks
+  git:
+    repo: https://github.com/vivien/i3blocks.git
+    dest: /tmp/i3blocks
+
+- name: Run autogen for i3blocks
+  shell: ./autogen.sh
+  args:
+    chdir: /tmp/i3blocks
+
+- name: Run configure for i3blocks
+  shell: ./configure
+  args:
+    chdir: /tmp/i3blocks
+
+- name: Run make for i3blocks
+  shell: make
+  args:
+    chdir: /tmp/i3blocks
+
+- name: Run make install for i3blocks
   become: yes
-  apt:
-    name: i3blocks
+  shell: make install
+  args:
+    chdir: /tmp/i3blocks
 
 - name: Copy i3blocks config
   copy:
