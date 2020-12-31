@@ -7,7 +7,7 @@
 
 - name: Install rustup
   shell: "curl https://sh.rustup.rs | bash -s  -- -y"
-  when: rustup_exists.stat == False
+  when: not rustup_exists.stat.exists
 
 - name: Install rust dev libraries
   become: yes
