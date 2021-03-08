@@ -7,6 +7,9 @@
 [push]
     default = simple
 
+[init]
+	defaultBranch = main
+
 [diff]
     tool = meld
 [difftool]
